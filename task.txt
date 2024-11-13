@@ -1,0 +1,66 @@
+Assessment: Simple E-Commerce Website Development
+
+Instructions:
+Using PHP, MySQL, and Bootstrap, create a simple e-commerce website that meets the following requirements. Follow the specifications closely, and submit your project files, a MySQL database export, and a README with setup instructions.
+
+Questions:
+
+1. Database Design (10 Marks)
+Design a MySQL database named ecommerce with the following tables:
+Products: Create a products table to store product details like product ID, name, description, price, and image URL.
+Users: Create a users table to store user information, including user ID, name, email, and password.
+Orders: Create an orders table to store order details, including order ID, user ID, total amount, and order date.
+Order Items: Create an order_items table to store details of items in each order, including order item ID, order ID, product ID, and quantity.
+Provide the SQL code for table creation.
+
+2. Home Page Development (10 Marks)
+Develop an index.php page that displays a list of products with a brief description, price, and an "Add to Cart" button.
+Use Bootstrap to display products in a grid layout with cards.
+
+3. Product Details Page (10 Marks)
+Create a product.php page that shows a detailed view of a single product, including a larger image, full description, price, and an "Add to Cart" button.
+
+4. User Authentication (20 Marks)
+Develop register.php and login.php pages for user registration and login.
+Implement session management to allow users to log in and access a shopping cart.
+Explain how you handled password security and session management in your code.
+
+5. Shopping Cart Functionality (20 Marks)
+Create a cart.php page where users can:
+Add products to the cart.
+Update the quantity of products in the cart.
+Remove products from the cart.
+Display the total price for all items in the cart.
+
+6. Checkout Page (10 Marks)
+Develop a checkout.php page that allows logged-in users to:
+View their cart items and the final price summary.
+Enter a shipping address for the order.
+Save the order and order items in the database.
+Describe the process of saving order details to the database.
+
+7. Order History Page (10 Marks)
+Create an orders.php page that displays a user’s past orders, including order date, items purchased, and total amount for each order.
+Make this page accessible only to logged-in users.
+
+8. UI Design with Bootstrap (10 Marks)
+Use Bootstrap to style your pages, including the navbar, buttons, and forms.
+Ensure the website is responsive and visually appealing.
+
+9. Extra Features (Optional, up to 10 Marks)
+Implement any additional features such as:
+A search functionality on the homepage.
+Pagination for the products list if the database contains many items.
+A simple admin page (admin.php) to add, edit, or delete products.
+Submission Requirements:
+Deploy your project on a local server (e.g., XAMPP) and provide setup instructions in the README.
+Push code on GitHub and submit your project link.
+Grading Criteria:
+
+Functionality: (40 Marks) Meets all functional requirements.
+Code Quality: (20 Marks) Organized, commented, and clean code.
+UI/UX Design: (20 Marks) Easy to navigate and visually appealing interface.
+Database Design: (10 Marks) Properly structured and normalized database.
+Extra Features: (Optional) Additional functionality beyond requirements.
+
+submission 20th November... All the best..
