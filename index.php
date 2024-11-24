@@ -1,37 +1,60 @@
 <?php include 'header.php'?>
 <?php include 'navbar.php'?>
+<?php include 'db.php'?>
+
+<?php
+// Query to fetch products from the database
+$query = "SELECT Product_ID, P_Name, P_Price, Image_URL, P_Description FROM products";
+$result = mysqli_query($conn, $query);
+?>
 
 <div class="container">
     <div class="row">
+        <?php while ($product = mysqli_fetch_assoc($result)): ?>
         <div class="col-sm-4">
-          <div class="card">
-            <img src="" alt="Product 1">
-            <div class="text">
-              <p>Product description goes here</p>
-            </div>
-            <button class="button">Add to cart</button>
-          </div>
-        </div><br><br>
+            <div class="card">
+                <img src="<?php echo $product['Image_URL']; ?>" alt="<?php echo $product['P_Name']; ?>">
+                <div class="text">
+                    <?php
+                    // Fetch the product description
+                    $description = $product['P_Description'];
 
-        <div class="col-sm-4">
-          <div class="card">
-            <img src="" alt="Product 2">
-            <div class="text">
-              <p>Product description goes here</p>
-            </div>
-            <button class="button">Add to cart</button>
-          </div>
-        </div><br><br>
+                    // Shorten the description to 20 words or 100 characters
+                    $word_limit = 20;
+                    $char_limit = 100;
 
-        <div class="col-sm-4">
-          <div class="card">
-            <img src="" alt="Product 3">
-            <div class="text">
-              <p>Product description goes here</p>
+                    // Split the description into words
+                    $words = explode(' ', $description);
+
+                    // Truncate to 20 words if necessary
+                    $truncated_description = implode(' ', array_slice($words, 0, $word_limit));
+
+                    // Ensure description doesn't exceed 100 characters and doesn't cut off mid-word
+                    if (strlen($truncated_description) < $char_limit) {
+                        $truncated_description = $description;
+                    } else {
+                        $truncated_description = substr($description, 0, $char_limit);
+                        $last_space = strrpos($truncated_description, ' ');
+                        if ($last_space !== false) {
+                            $truncated_description = substr($truncated_description, 0, $last_space);
+                        }
+                    }
+                    ?>
+                    <p><?php echo $truncated_description; ?>...</p>
+                    <a href="product?product_id=<?php echo $product['Product_ID']; ?>">View Details</a>
+                    <p>Price: $<?php echo $product['P_Price']; ?></p>
+                </div>
+                
+                <!-- Add to Cart Form -->
+                <form action="cart" method="POST">
+                    <input type="hidden" name="product_id" value="<?php echo $product['Product_ID']; ?>">
+                    <label for="quantity">Quantity: </label>
+                    <input type="number" name="quantity" value="1" min="1" required><br>
+                    <button type="submit" name="add_to_cart">Add to Cart</button>
+                </form>
             </div>
-            <button class="button">Add to cart</button>
-          </div>
         </div>
+        <?php endwhile; ?>
     </div>
 </div>
 

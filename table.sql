@@ -1,9 +1,9 @@
 -- Products Table
 CREATE TABLE Products (
     Product_ID INT PRIMARY KEY AUTO_INCREMENT,
-    Name VARCHAR(255) NOT NULL,
-    Description VARCHAR(255) NOT NULL,
-    Price INT NOT NULL,
+    P_Name VARCHAR(255) NOT NULL,
+    P_Description VARCHAR(255) NOT NULL,
+    P_Price INT NOT NULL,
     Image_URL VARCHAR(255)
     );
 
