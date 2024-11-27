@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'])) {
     // Check if the product is already in the cart
     if (isset($_SESSION['cart'][$product_id])) {
         // Update the quantity
-        $_SESSION['cart'][$product_id] += $quantity;
+        $_SESSION['cart'][$product_id] = $_SESSION['cart'][$product_id] + $quantity;
     } else {
         // Add new product to the cart
         $_SESSION['cart'][$product_id] = $quantity;

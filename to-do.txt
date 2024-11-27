@@ -1,0 +1,6 @@
+indent empty cart results
+add items to products table(including image url)
+add users to database
+format cart to look more appealing
+add content to footer
+work on checkout page

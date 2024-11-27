@@ -1,4 +1,4 @@
-.nav-container {
+.container-fluid {
     display: flex;
     margin-left: 20px;
 }
@@ -8,8 +8,7 @@
     font-size: 20px;
 }
 .navbar-nav .nav-link {
-    margin-right: 10px;
-    margin-left: 10px;
+    padding: 10px 20px;
     border-radius: 5px;
     background-color: orange;
 }
@@ -18,12 +17,32 @@
     background-color:gold;
     color: white;
 }
-nav-item img {
+.nav-item {
+    margin-left: 10px;
+}
+.nav-item img {
     height: 20px;
     width: 20px;
 }
+.nav-button {
+    display: flex;
+    gap: 5px;
+}
+.btn-custom {
+    background-color: #1bb17f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+.btn-custom:hover {
+    background-color: #0b688d;
+}
 .container {
     margin: 20px;
+    border-radius: 10px;
 }
 .container .row {
     margin: 20px;
@@ -59,4 +78,7 @@ nav-item img {
 .add-to-cart:hover {
     background-color: yellow;
     color: mediumblue;
+}
+.cart-title {
+    margin: 10px;
 }

@@ -1,0 +1,59 @@
+<?php include 'header.php'?>
+<?php include 'navbar.php'?>
+<?php include 'db.php'?>
+
+<?php
+// Start the session to access the cart
+session_start();
+
+// Check if the cart is empty
+$cart = $_SESSION['cart'] ?? [];
+$total_price = 0;
+?>
+
+<div class="container">
+    <h1>Your Cart</h1>
+    
+    <?php if (empty($cart)): ?>
+        <div class="alert alert-info">
+            Your cart is empty. <a href="index.php">Continue shopping</a>.
+        </div>
+    <?php else: ?>
+        <div class="row">
+            <?php foreach ($cart as $product_id => $item): ?>
+                <?php
+                $item_total = $item['price'] * $item['quantity'];
+                $total_price += $item_total;
+                ?>
+                <div class="col-sm-4 mb-4">
+                    <div class="card">
+                        <img src="<?php echo htmlspecialchars($item['image']); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($item['name']); ?>">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo htmlspecialchars($item['name']); ?></h5>
+                            <p class="card-text"><strong>Price:</strong> $<?php echo number_format($item['price'], 2); ?></p>
+                            <p class="card-text"><strong>Quantity:</strong> <?php echo $item['quantity']; ?></p>
+                            <p class="card-text"><strong>Total:</strong> $<?php echo number_format($item_total, 2); ?></p>
+                            <form action="update_cart.php" method="POST" style="display:inline;">
+                                <input type="hidden" name="product_id" value="<?php echo $product_id; ?>">
+                                <button type="submit" name="remove_item" class="btn btn-danger btn-sm">Remove</button>
+                            </form>
+                            <form action="update_cart.php" method="POST" style="display:inline;">
+                                <input type="hidden" name="product_id" value="<?php echo $product_id; ?>">
+                                <input type="number" name="new_quantity" value="<?php echo $item['quantity']; ?>" min="1" class="form-control-sm">
+                                <button type="submit" name="update_quantity" class="btn btn-primary btn-sm">Update</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+
+        <div class="cart-total text-center mt-4">
+            <h4>Grand Total: $<?php echo number_format($total_price, 2); ?></h4>
+            <a href="index.php" class="btn btn-secondary">Continue Shopping</a>
+            <a href="checkout.php" class="btn btn-success">Proceed to Checkout</a>
+        </div>
+    <?php endif; ?>
+</div>
+
+<?php include 'footer.php'; ?>
