@@ -1,7 +1,62 @@
-.button{
+.nav-container {
+    display: flex;
+    margin-left: 20px;
+}
+.nav-logo {
+    color:blue;
+    text-decoration: none;
+    font-size: 20px;
+}
+.navbar-nav .nav-link {
+    margin-right: 10px;
+    margin-left: 10px;
+    border-radius: 5px;
     background-color: orange;
+}
+.navbar-nav .nav-link:hover {
+    border-radius: 5px;
+    background-color:gold;
     color: white;
-    border-radius: 10px;
-    height: 3rem;
-    font-size: medium;
+}
+nav-item img {
+    height: 20px;
+    width: 20px;
+}
+.container {
+    margin: 20px;
+}
+.container .row {
+    margin: 20px;
+}
+.card {
+    padding: 10px;
+    border-radius: 5px;
+}
+.view-details {
+    text-decoration: none;
+    border-radius: 5px;
+    background-color: cornflowerblue;
+    color: black;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+.view-details:hover {
+    background-color: darkcyan;
+    color: black;
+}
+.price {
+    margin-top: 10px;
+}
+.quantity-input {
+    width: 100px;
+}
+.add-to-cart {
+    margin: 20px;
+    border-radius: 5px;
+    background-color: orange;
+    color: black;
+}
+.add-to-cart:hover {
+    background-color: yellow;
+    color: mediumblue;
 }

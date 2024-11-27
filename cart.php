@@ -44,7 +44,7 @@ if (isset($_GET['remove'])) {
 <?php
 // Display cart items
 if (empty($_SESSION['cart'])) {
-    echo "<p>Your cart is empty.</p>";
+    echo "<p>Your cart is empty!</p>";
 } else {
     echo "<ul>";
     foreach ($_SESSION['cart'] as $product_id => $quantity) {

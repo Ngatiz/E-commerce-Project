@@ -3,6 +3,32 @@
 <?php include 'db.php'?>
 
 <?php
+// Start the session to manage the cart
+session_start();
+
+// Initialize the cart if it doesn't exist
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = [];
+}
+
+// Handle Add to Cart functionality
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'])) {
+    $product_id = $_POST['product_id'];
+    $quantity = $_POST['quantity'];
+
+    // Check if the product is already in the cart
+    if (isset($_SESSION['cart'][$product_id])) {
+        // Update the quantity
+        $_SESSION['cart'][$product_id] += $quantity;
+    } else {
+        // Add new product to the cart
+        $_SESSION['cart'][$product_id] = $quantity;
+    }
+
+    // Display a success message (optional)
+    $success_message = "Product added to cart successfully!";
+}
+
 // Query to fetch products from the database
 $query = "SELECT Product_ID, P_Name, P_Price, Image_URL, P_Description FROM products";
 $result = mysqli_query($conn, $query);
@@ -10,6 +36,10 @@ $result = mysqli_query($conn, $query);
 
 <div class="container">
     <div class="row">
+        <?php if (isset($success_message)): ?>
+            <div class="alert alert-success"><?php echo $success_message; ?></div>
+        <?php endif; ?>
+
         <?php while ($product = mysqli_fetch_assoc($result)): ?>
         <div class="col-sm-4">
             <div class="card">
@@ -41,16 +71,16 @@ $result = mysqli_query($conn, $query);
                     }
                     ?>
                     <p><?php echo $truncated_description; ?>...</p>
-                    <a href="product?product_id=<?php echo $product['Product_ID']; ?>">View Details</a>
-                    <p>Price: $<?php echo $product['P_Price']; ?></p>
+                    <a href="product?product_id=<?php echo $product['Product_ID']; ?>" class="view-details">View Details</a>
+                    <p class="price"><strong>Price:</strong> $<?php echo $product['P_Price']; ?></p>
                 </div>
                 
                 <!-- Add to Cart Form -->
-                <form action="cart" method="POST">
+                <form action="index" method="POST">
                     <input type="hidden" name="product_id" value="<?php echo $product['Product_ID']; ?>">
                     <label for="quantity">Quantity: </label>
-                    <input type="number" name="quantity" value="1" min="1" required><br>
-                    <button type="submit" name="add_to_cart">Add to Cart</button>
+                    <input type="number" name="quantity" class="quantity-input" value="1" min="1" required><br>
+                    <button type="submit" name="add_to_cart" class="add-to-cart">Add to Cart</button>
                 </form>
             </div>
         </div>
