@@ -20,7 +20,8 @@ CREATE TABLE Orders (
     Order_ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     User_ID INT,
     Total_Amount INT NOT NULL,
-    Order_Date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    Order_Date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (User_ID) REFERENCES Users(User_ID)
     );
 
 -- Order Items Table
@@ -28,5 +29,7 @@ CREATE TABLE Order_Items (
     OrderItem_ID INT NOT NULL,
     Order_ID INT NOT NULL,
     Product_ID INT NOT NULL,
-    Quantity INT NOT NULL
+    Quantity INT NOT NULL,
+    FOREIGN KEY (Order_ID) REFERENCES Orders(Order_ID),
+    FOREIGN KEY (Product_ID) REFERENCES Products(Product_ID)
     );

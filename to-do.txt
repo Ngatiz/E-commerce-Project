@@ -1,6 +1,9 @@
-indent empty cart results
+indent empty cart results // incorporate new format of cart content(cart.txt) into cart code
 add items to products table(including image url)
 add users to database
 format cart to look more appealing
 add content to footer
 work on checkout page
+work on orders page
+
+push current progress
