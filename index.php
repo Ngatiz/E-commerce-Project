@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'])) {
 
 // Query to fetch products from the database
 $query = "SELECT Product_ID, P_Name, P_Price, Image_URL, P_Description FROM products";
-$result = mysqli_query($conn, $query);
+$result = mysqli_query(mysql: $conn, query: $query);
 ?>
 
 <div class="container">
@@ -40,10 +40,10 @@ $result = mysqli_query($conn, $query);
             <div class="alert alert-success"><?php echo $success_message; ?></div>
         <?php endif; ?>
 
-        <?php while ($product = mysqli_fetch_assoc($result)): ?>
+        <?php while ($product = mysqli_fetch_assoc(result: $result)): ?>
         <div class="col-sm-4">
             <div class="card">
-                <img src="<?php echo $product['Image_URL']; ?>" alt="<?php echo $product['P_Name']; ?>">
+                <img class="product-img" src="<?php echo $product['Image_URL']; ?>" alt="<?php echo $product['P_Name']; ?>">
                 <div class="text">
                     <?php
                     // Fetch the product description
@@ -54,19 +54,19 @@ $result = mysqli_query($conn, $query);
                     $char_limit = 100;
 
                     // Split the description into words
-                    $words = explode(' ', $description);
+                    $words = explode(separator: ' ', string: $description);
 
                     // Truncate to 20 words if necessary
-                    $truncated_description = implode(' ', array_slice($words, 0, $word_limit));
+                    $truncated_description = implode(separator: ' ', array: array_slice(array: $words, offset: 0, length: $word_limit));
 
                     // Ensure description doesn't exceed 100 characters and doesn't cut off mid-word
-                    if (strlen($truncated_description) < $char_limit) {
+                    if (strlen(string: $truncated_description) < $char_limit) {
                         $truncated_description = $description;
                     } else {
-                        $truncated_description = substr($description, 0, $char_limit);
-                        $last_space = strrpos($truncated_description, ' ');
+                        $truncated_description = substr(string: $description, offset: 0, length: $char_limit);
+                        $last_space = strrpos(haystack: $truncated_description, needle: ' ');
                         if ($last_space !== false) {
-                            $truncated_description = substr($truncated_description, 0, $last_space);
+                            $truncated_description = substr(string: $truncated_description, offset: 0, length: $last_space);
                         }
                     }
                     ?>
