@@ -42,7 +42,7 @@ $result = mysqli_query(mysql: $conn, query: $query);
 
         <?php while ($product = mysqli_fetch_assoc(result: $result)): ?>
         <div class="col-sm-4">
-            <div class="card">
+            <div class="card h-100 bg-success mb-3">
                 <img class="product-img" src="<?php echo $product['Image_URL']; ?>" alt="<?php echo $product['P_Name']; ?>">
                 <div class="text">
                     <?php
@@ -72,7 +72,7 @@ $result = mysqli_query(mysql: $conn, query: $query);
                     ?>
                     <p><?php echo $truncated_description; ?>...</p>
                     <a href="product?product_id=<?php echo $product['Product_ID']; ?>" class="view-details">View Details</a>
-                    <p class="price"><strong>Price:</strong> $<?php echo $product['P_Price']; ?></p>
+                    <p class="price"><strong>Price:</strong> shs.<?php echo $product['P_Price']; ?></p>
                 </div>
                 
                 <!-- Add to Cart Form -->

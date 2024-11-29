@@ -50,6 +50,16 @@
 .card {
     padding: 10px;
     border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: none;
+    margin-bottom: 20px;
+    background-color: green;
+}
+.product-img {
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+    display: block;
 }
 .view-details {
     text-decoration: none;
@@ -81,26 +91,9 @@
 }
 .cart-title {
     margin: 10px;
-}
-
-/* sample formatting */
-.card {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border: none;
-}
-
-.product-img {
-    height: 200px;
-    object-fit: cover;
-    width: 100%;
-    display: block;
-}
-
-.card-title {
     font-size: 1.25rem;
     font-weight: bold;
 }
-
 .cart-total {
     margin-top: 20px;
     padding: 15px;

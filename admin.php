@@ -83,7 +83,7 @@ $result = mysqli_query(mysql: $conn, query: $query);
                     <td><?php echo $product['Product_ID']; ?></td>
                     <td><?php echo $product['P_Name']; ?></td>
                     <td><?php echo $product['P_Description']; ?></td>
-                    <td>$<?php echo $product['P_Price']; ?></td>
+                    <td>shs<?php echo $product['P_Price']; ?></td>
                     <td><?php echo $product['Image_URL']; ?></td>
                     <td>
                         <!-- Edit Button -->
